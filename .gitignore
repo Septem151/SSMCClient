@@ -12,7 +12,6 @@
 /logs/
 /saves/
 /stencil*.png
-/resourcepacks/
 /schematics/
 /blueprints/
 /betterfps.txt
@@ -31,4 +30,3 @@ realms_persistence.json
 /shaderpacks/
 /forge-1.20.1-47.1.43*
 !/forge-1.20.1-47.1.43-installer.jar
-
