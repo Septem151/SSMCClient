@@ -57,7 +57,8 @@ jobs:
         run: |
           mkdir "${BUILD_DIR}"
           zip -r "${BUILD_DIR}/${GITHUB_REPOSITORY##*/}-${RELEASE_VERSION}-client.zip" \
-            mods modlist.json config DEPENDENCIES.md LICENSE README.md options.txt
+            mods modlist.json config DEPENDENCIES.md LICENSE README.md options.txt \
+            forge-1.20.1-47.1.43-installer.jar
 
       - name: Delete old release if exists
         run: gh release delete --yes "${RELEASE_VERSION}"
