@@ -52,9 +52,9 @@ jobs:
       - name: Bundle modpack release
         id: bundle
         run: |
-          mkdir build
-          zip -r "build/${GITHUB_REPOSITORY##*/}-${RELEASE_VERSION}-server.zip" \
-            mods modlist.json config LICENSE README.md
+          mkdir package
+          zip -r "package/${GITHUB_REPOSITORY##*/}-${RELEASE_VERSION}-client.zip" \
+            mods modlist.json config DEPENDENCIES.md LICENSE README.md options.txt
 
       - name: Delete old release if exists
         run: gh release delete --yes "${RELEASE_VERSION}"
