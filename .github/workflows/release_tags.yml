@@ -7,6 +7,9 @@ on:
 permissions:
   contents: write
 
+env:
+  BUILD_DIR: package
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -52,8 +55,8 @@ jobs:
       - name: Bundle modpack release
         id: bundle
         run: |
-          mkdir package
-          zip -r "package/${GITHUB_REPOSITORY##*/}-${RELEASE_VERSION}-client.zip" \
+          mkdir "${BUILD_DIR}"
+          zip -r "${BUILD_DIR}/${GITHUB_REPOSITORY##*/}-${RELEASE_VERSION}-client.zip" \
             mods modlist.json config DEPENDENCIES.md LICENSE README.md options.txt
 
       - name: Delete old release if exists
@@ -76,7 +79,7 @@ jobs:
             -f tag_name="${RELEASE_VERSION}" \
             --jq ".body" > "${CHANGELOG_FILE}"
           cat "${CHANGELOG_FILE}"
-          gh release create "${RELEASE_VERSION}" -F "${CHANGELOG_FILE}" $PRERELEASE ./build/*.zip
+          gh release create "${RELEASE_VERSION}" -F "${CHANGELOG_FILE}" $PRERELEASE ./${BUILD_DIR}/*.zip
         shell: bash
         if: ${{ steps.bundle.outcome == 'success' }}
         env:
