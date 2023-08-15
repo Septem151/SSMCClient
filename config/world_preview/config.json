@@ -1,0 +1,15 @@
+{
+  "savedSeeds": [
+    "2112031829"
+  ],
+  "showControls": true,
+  "showFrameTime": false,
+  "buildFullVertChunk": false,
+  "backgroundSampleVertChunk": false,
+  "sampleStructures": true,
+  "sampleHeightmap": false,
+  "heightmapMinY": 32,
+  "heightmapMaxY": 255,
+  "colorMap": "world_preview:inferno",
+  "numThreads": 7
+}
